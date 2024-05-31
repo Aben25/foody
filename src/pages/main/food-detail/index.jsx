@@ -21,6 +21,7 @@ function FoodDetail() {
         <Typography variant="h4" component="h1" gutterBottom>
           Product Details
         </Typography>
+        
       </Box>
       <IconButton
         color="primary"
