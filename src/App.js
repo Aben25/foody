@@ -4,19 +4,24 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { QrCode } from '@mui/icons-material';
+import FoodDetail from './pages/main/food-detail';
+import QrScanner from './pages/main/qr-scanner';
+
+
 
 function App() {
   return (
+    <Router>
     <Container>
-    <Box sx={{ my: 4 }}>
-      <Typography variant="h4" component="h1" gutterBottom>
-        Material-UI 
-      </Typography>
-      <Button variant="contained" color="primary">
-        Let's Add
-      </Button>
-    </Box>
+    
+    <Routes>
+          <Route path="/" element={<QrScanner />} />
+          <Route path='/food-detail' element={<FoodDetail />} />
+         </Routes>
   </Container>
+  </Router>
   );
 }
 
