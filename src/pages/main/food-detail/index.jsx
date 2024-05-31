@@ -6,7 +6,12 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
-import { Chart, IndicatorChart, SisenseContextProvider } from "@sisense/sdk-ui";
+import {
+  Table,
+  Chart,
+  IndicatorChart,
+  SisenseContextProvider,
+} from "@sisense/sdk-ui";
 import * as DM from "../../../data/data.ts";
 import { filterFactory, measureFactory } from "@sisense/sdk-data";
 
@@ -56,6 +61,23 @@ function FoodDetail() {
           }}
         />
       </Box>
+      <Table
+        dataSet={DM.DataSource}
+        dataOptions={{
+          columns: [
+            {
+              column: DM.data.product_name,
+              name: "product name",
+            },
+            DM.data.energy_100g,
+          ],
+        }}
+        filters={filterFactory.contains(DM.data.code, 225)}
+        styleOptions={{
+          rowsPerPage: 12,
+          height: 420,
+        }}
+      />
       <IconButton
         color="primary"
         onClick={handleChatButtonClick}
