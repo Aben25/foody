@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -12,13 +12,8 @@ const QrScanner = () => {
 
   const _onDetected = useCallback((result) => {
     setResults([result]);
-  }, []);
-
-  useEffect(() => {
-    if (results.length > 0) {
-      navigate("/food-detail", { state: { qrCode: results[0].codeResult.code } });
-    }
-  }, [results, navigate]);
+    navigate("/food-detail", { state: { qrCode: result.codeResult.code } });
+  }, [navigate]);
 
   return (
     <Container maxWidth="sm">
@@ -45,7 +40,7 @@ const QrScanner = () => {
             </Typography>
             <Scanner onDetected={_onDetected} />
             <Typography variant="body1" sx={{ mt: 2 }}>
-              {results[0] ? results[0].codeResult.code : "No data scanned"}
+              {results.length > 0 ? "Scanned" : "No data scanned"}
             </Typography>
           </Box>
         </Paper>
