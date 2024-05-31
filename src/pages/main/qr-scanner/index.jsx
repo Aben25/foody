@@ -1,5 +1,10 @@
 import React, { useState, useCallback } from "react";
 import Scanner from "./scanner";
+import IconButton from '@mui/material/IconButton';
+import ChatIcon from '@mui/icons-material/Chat';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 
 const QrScanner = () => {
   const [results, setResults] = useState([]);
@@ -10,11 +15,12 @@ const QrScanner = () => {
   }, []);
 
   return (
-    <div style={{ margin: "30px" }}>
+    <Container>
+    <Box>
       <p>Barcode Scanner</p>
       <Scanner onDetected={_onDetected} />
-      <p>{results[0] ? results[0].codeResult.code : "No data scanned"}</p>
-    </div>
+    </Box>
+    </Container>
   );
 };
 

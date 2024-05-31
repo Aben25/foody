@@ -15,8 +15,8 @@ const Scanner = ({ onDetected }) => {
         inputStream: {
           type: "LiveStream",
           constraints: {
-            width: 640,
-            height: 320,
+            width: window.innerHeight*0.4,
+            height: window.innerHeight*0.2,
             facingMode: "environment",
           },
         },
