@@ -8,7 +8,6 @@ import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 import {
   Table,
-  Chart,
   IndicatorChart,
   SisenseContextProvider,
 } from "@sisense/sdk-ui";
@@ -18,6 +17,10 @@ import { filterFactory, measureFactory } from "@sisense/sdk-data";
 function FoodDetail() {
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Extracting QR Code from URL parameters or default to '2255'
+  const queryParams = new URLSearchParams(location.search);
+  const qrCode = queryParams.get('qrCode') || '255';
 
   const handleChatButtonClick = () => {
     navigate("/chat");
@@ -37,16 +40,13 @@ function FoodDetail() {
                 column: measureFactory.sum(DM.data.ecoscore_score),
               },
             ],
-            secondary: [],
-            min: [measureFactory.constant(0)],
-            max: [measureFactory.constant(125000000)],
           }}
-          filters={filterFactory.contains(DM.data.code, 225)}
+          filters={filterFactory.equals(DM.data.code, qrCode)} // Using QR code as a filter with default
           styleOptions={{
             indicatorComponents: {
               title: {
                 shouldBeShown: true,
-                text: "Ecoscore score",
+                text: "Ecoscore Score",
               },
               secondaryTitle: {
                 text: "",
@@ -67,12 +67,12 @@ function FoodDetail() {
           columns: [
             {
               column: DM.data.product_name,
-              name: "product name",
+              name: "Product Name",
             },
             DM.data.energy_100g,
           ],
         }}
-        filters={filterFactory.contains(DM.data.code, 225)}
+        filters={filterFactory.equals(DM.data.code, qrCode)} // Using QR code as a filter with default
         styleOptions={{
           rowsPerPage: 12,
           height: 420,
