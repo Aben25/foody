@@ -12,7 +12,7 @@ import {
     TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
 
-const API_KEY = process.env.REACT_APP_API_URL;
+const API_KEY = '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';
 // "Explain things like you would to a 10 year old learning how to code."
 const systemMessage = { //  Explain things like you're talking to a software professional with 5 years of experience.
     "role": "system", "content": "Explain things like you're talking to a software professional with 2 years of experience."
@@ -93,24 +93,24 @@ function ChatPage() {
     }
 
     return (
-        <div className="App">
-            <div style={{ position: "relative", height: "800px", width: "700px" }}>
-                <MainContainer>
-                    <ChatContainer>
-                        <MessageList
-                            scrollBehavior="smooth"
-                            typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing" /> : null}
-                        >
-                            {messages.map((message, i) => {
-                                console.log(message)
-                                return <Message key={i} model={message} />
-                            })}
-                        </MessageList>
-                        <MessageInput placeholder="Type message here" onSend={handleSend} />
-                    </ChatContainer>
-                </MainContainer>
-            </div>
+        <div className="chat-container">
+
+            <MainContainer>
+                <ChatContainer>
+                    <MessageList
+                        scrollBehavior="smooth"
+                        typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing" /> : null}
+                    >
+                        {messages.map((message, i) => {
+                            console.log(message)
+                            return <Message key={i} model={message} />
+                        })}
+                    </MessageList>
+                    <MessageInput placeholder="Type message here" onSend={handleSend} />
+                </ChatContainer>
+            </MainContainer>
         </div>
+
     )
 }
 
