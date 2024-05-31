@@ -95,6 +95,17 @@ function FoodDetail() {
           borderRadius: "50%",
         }}
       >
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+
+          <ChatPage />
+
+
+        </Modal>
         <ChatIcon />
       </IconButton>
     </Container>
