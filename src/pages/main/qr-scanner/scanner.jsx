@@ -15,8 +15,8 @@ const Scanner = ({ onDetected }) => {
         inputStream: {
           type: "LiveStream",
           constraints: {
-            width: window.innerHeight*0.4,
-            height: window.innerHeight*0.2,
+            width: window.innerHeight*0.5,
+            height: window.innerHeight*0.3,
             facingMode: "environment",
           },
         },
@@ -24,7 +24,7 @@ const Scanner = ({ onDetected }) => {
           halfSample: true,
           patchSize: "large", // x-small, small, medium, large, x-large
           debug: {
-            showCanvas: true,
+            showCanvas: false,
             showPatches: false,
             showFoundPatches: false,
             showSkeleton: false,
@@ -32,9 +32,9 @@ const Scanner = ({ onDetected }) => {
             showPatchLabels: false,
             showRemainingPatchLabels: false,
             boxFromPatches: {
-              showTransformed: true,
-              showTransformedBox: true,
-              showBB: true,
+              showTransformed: false,
+              showTransformedBox: false,
+              showBB: false,
             },
           },
         },
@@ -70,7 +70,6 @@ const Scanner = ({ onDetected }) => {
       id="interactive"
       className="viewport"
       style={{
-        overflow: 'hidden', // Ensures content doesn't overflow the rounded corners
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
