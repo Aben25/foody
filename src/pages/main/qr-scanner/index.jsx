@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { Container, TextField, Box, InputAdornment, Dialog, DialogContent, DialogActions, IconButton } from "@mui/material";
+import { Container, TextField, Box, InputAdornment, Dialog, DialogContent, DialogActions, IconButton, Grid, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import Scanner from "./scanner";
 import Button from '@mui/material/Button';
@@ -36,11 +36,12 @@ const QrScanner = () => {
   return (
     <Container 
       sx={{ 
-        height: '100vh',
+        width:'100dvw',
+        height: '100dvh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-      }}
+    }}
     >
       <Box
         sx={{
@@ -56,6 +57,7 @@ const QrScanner = () => {
           gap: '2vw'
         }}
       >
+        <Typography variant="h4" component="h1" gutterBottom>Search To get Detail</Typography>
         <TextField
           label="Search"
           variant="outlined"
@@ -72,35 +74,30 @@ const QrScanner = () => {
             ),
           }}
         />
-
         <Button 
-          style={{ backgroundColor: '#198754', color: 'white', width: '100%' }} 
+          style={{ backgroundColor: '#198754', color: 'white', width: '95%' }} 
           onClick={handleSearchClick}
         >
           Search
         </Button>
-        <Box sx={{
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '2vw',
-          flex: '2'
-        }}>
-          <Button 
-            style={{ backgroundColor: '#006994', display: 'flex', flex: '1', color: 'white', width: '100%' }} 
-            onClick={handleDialogOpen}
-          >
-            Scan Barcode
-          </Button>
-          <Button 
-            style={{ backgroundColor: '#006994', display: 'flex', flex: '1', color: 'white', width: '100%' }} 
-            onClick={handleDialogOpen}
-          >
-            Scan QR
-          </Button>
-        </Box>
+        <Grid container spacing={2} sx={{ width: '100%' }}>
+          <Grid item xs={12} sm={6}>
+            <Button 
+              style={{ backgroundColor: '#006994', color: 'white', width: '100%' }} 
+              onClick={handleDialogOpen}
+            >
+              Scan Barcode
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Button 
+              style={{ backgroundColor: '#006994', color: 'white', width: '100%' }} 
+              onClick={handleDialogOpen}
+            >
+              Scan QR
+            </Button>
+          </Grid>
+        </Grid>
       </Box>
 
       <Dialog open={openDialog} onClose={handleDialogClose} maxWidth="md" fullWidth>
