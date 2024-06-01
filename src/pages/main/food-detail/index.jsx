@@ -13,7 +13,7 @@ import {
 } from "@sisense/sdk-ui";
 import * as DM from "../../../data/data.ts";
 import { filterFactory, measureFactory } from "@sisense/sdk-data";
-
+import { Modal } from "@mui/material";
 function FoodDetail() {
   const location = useLocation();
   const navigate = useNavigate();
