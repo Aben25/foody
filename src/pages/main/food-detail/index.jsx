@@ -28,8 +28,8 @@ function FoodDetail() {
         onClick={handleChatButtonClick}
         sx={{
           position: 'fixed',
-          bottom: 16,
-          right: 16,
+          bottom: 50,
+          right: 50,
           bgcolor: 'primary.main',
           color: 'white',
           '&:hover': {
