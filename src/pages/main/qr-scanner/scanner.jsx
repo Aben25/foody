@@ -15,8 +15,8 @@ const Scanner = ({ onDetected }) => {
         inputStream: {
           type: "LiveStream",
           constraints: {
-            width: 640,
-            height: 320,
+            width: window.innerHeight*0.4,
+            height: window.innerHeight*0.2,
             facingMode: "environment",
           },
         },
@@ -65,7 +65,18 @@ const Scanner = ({ onDetected }) => {
     };
   }, [_onDetected]);
 
-  return <div id="interactive" className="viewport"></div>;
+  return (
+    <div
+      id="interactive"
+      className="viewport"
+      style={{
+        overflow: 'hidden', // Ensures content doesn't overflow the rounded corners
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}
+    ></div>
+  );
 };
 
 export default Scanner;

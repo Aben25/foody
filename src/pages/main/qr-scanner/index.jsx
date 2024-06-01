@@ -6,6 +6,7 @@ const QrScanner = () => {
 
   const _onDetected = useCallback((result) => {
     setResults([result]);
+    // Redirect to '/food-detail' with the scanned QR code as a parameter
     window.location.href = `/food-detail?qrCode=${result.codeResult.code}`;
   }, []);
 
