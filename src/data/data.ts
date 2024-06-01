@@ -93,3 +93,45 @@ export const data = createDimension({
         expression: '[data.vitamin_c]',
     }),
 }) as dataDimension;
+
+interface outputDimension extends Dimension {
+    barcode: Attribute;
+    brand: Attribute;
+    category: Attribute;
+    output_name: Attribute;
+    nutrition_type: Attribute;
+    nutrition_value: Attribute;
+}
+export const output = createDimension({
+    name: 'output',
+    barcode: createAttribute({
+        name: 'barcode',
+        type: 'numeric-attribute',
+        expression: '[output.barcode]',
+    }),
+    brand: createAttribute({
+        name: 'brand',
+        type: 'text-attribute',
+        expression: '[output.brand]',
+    }),
+    category: createAttribute({
+        name: 'category',
+        type: 'text-attribute',
+        expression: '[output.category]',
+    }),
+    output_name: createAttribute({
+        name: 'output_name',
+        type: 'text-attribute',
+        expression: '[output.name]',
+    }),
+    nutrition_type: createAttribute({
+        name: 'nutrition_type',
+        type: 'text-attribute',
+        expression: '[output.nutrition_type]',
+    }),
+    nutrition_value: createAttribute({
+        name: 'nutrition_value',
+        type: 'numeric-attribute',
+        expression: '[output.nutrition_value]',
+    }),
+}) as outputDimension;
