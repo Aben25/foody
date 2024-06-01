@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import ChatIcon from '@mui/icons-material/Chat';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';
+import { Modal, Box } from '@mui/material';
+
+
+import ChatPage from './../../chat/ChatPage';
+
 
 function FoodDetail() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [open, setOpen] = React.useState(false);
+
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
 
   const handleChatButtonClick = () => {
-    navigate('/chat');
+    // navigate('/chat');
+    handleOpen();
   };
 
   return (
@@ -21,7 +32,7 @@ function FoodDetail() {
         <Typography variant="h4" component="h1" gutterBottom>
           Product Details
         </Typography>
-        
+
       </Box>
       <IconButton
         color="primary"
@@ -40,6 +51,17 @@ function FoodDetail() {
           borderRadius: '50%',
         }}
       >
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+
+          <ChatPage />
+
+
+        </Modal>
         <ChatIcon />
       </IconButton>
     </Container>

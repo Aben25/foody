@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { QrCode } from '@mui/icons-material';
 import FoodDetail from './pages/main/food-detail';
 import QrScanner from './pages/main/qr-scanner';
-
+import ChatPage from './pages/chat/ChatPage';
 
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
     
     <Routes>
           <Route path="/" element={<QrScanner />} />
+          <Route path="/chat" element={<ChatPage />} />
           <Route path='/food-detail' element={<FoodDetail />} />
          </Routes>
   </Container>
