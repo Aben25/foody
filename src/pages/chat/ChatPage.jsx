@@ -28,7 +28,7 @@ const ChatPage = () => {
 
     const handleSend = async (message) => {
         if (message.trim() === "") return;
-
+        console.log(process.env.API_KEY);
         const outgoingMessage = {
             content: message,
             sender: "User",
