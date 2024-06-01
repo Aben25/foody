@@ -1,11 +1,13 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
-import IconButton from "@mui/material/IconButton";
-import ChatIcon from "@mui/icons-material/Chat";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
-import { useNavigate } from "react-router-dom";
+
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import IconButton from '@mui/material/IconButton';
+import ChatIcon from '@mui/icons-material/Chat';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { useNavigate } from 'react-router-dom';
+import { Modal, Box } from '@mui/material';
+
 import {
   Table,
   IndicatorChart,
@@ -13,17 +15,28 @@ import {
 } from "@sisense/sdk-ui";
 import * as DM from "../../../data/data.ts";
 import { filterFactory, measureFactory } from "@sisense/sdk-data";
-import { Modal } from "@mui/material";
+
+
+import ChatPage from './../../chat/ChatPage';
+
+
 function FoodDetail() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [open, setOpen] = React.useState(false);
+
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   // Extracting QR Code from URL parameters or default to '2255'
   const queryParams = new URLSearchParams(location.search);
   const qrCode = queryParams.get('qrCode') || '255';
 
+
   const handleChatButtonClick = () => {
-    navigate("/chat");
+    // navigate('/chat');
+    handleOpen();
   };
 
   return (
@@ -60,7 +73,6 @@ function FoodDetail() {
             },
           }}
         />
-      </Box>
       <Table
         dataSet={DM.DataSource}
         dataOptions={{
@@ -78,21 +90,22 @@ function FoodDetail() {
           height: 420,
         }}
       />
+      </Box>
       <IconButton
         color="primary"
         onClick={handleChatButtonClick}
         sx={{
-          position: "fixed",
+          position: 'fixed',
           bottom: 16,
           right: 16,
-          bgcolor: "primary.main",
-          color: "white",
-          "&:hover": {
-            bgcolor: "primary.dark",
+          bgcolor: 'primary.main',
+          color: 'white',
+          '&:hover': {
+            bgcolor: 'primary.dark',
           },
           width: 56,
           height: 56,
-          borderRadius: "50%",
+          borderRadius: '50%',
         }}
       >
         <Modal
